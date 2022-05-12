@@ -16,6 +16,6 @@ As the spaceship approached the moon surface, 1 of the 2 Inertial Measurement Un
 
 That action caused the acceleration data to briefly stop arriving to the computer and it resulted in navigation error and full reset. The reset did not take long but the uppermentions program extentions was programmed to be loaded every 1 minute. That resulted in 5 resets until the extentions were loaded.
 
-The resets caused the main (bottom) engine to stop. When the computer tried to start the engine again, but it needed to get power from 2 different souces. Because of the resets only 1 power source worked and the engine never started.
+The resets caused the main (bottom) engine to stop. When the computer tried to start the engine again, but it needed to get power from 2 different souces. Because of the resets only 1 power source worked and the engine never started and Beresheet couldn't slow down and lost altitude very fast.
 
 All these reasons leaded to the sad crashing of Beresheet. Let's hope it won't happen again in Bereshit 2 - 2024.
