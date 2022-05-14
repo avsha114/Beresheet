@@ -19,3 +19,12 @@ That action caused the acceleration data to briefly stop arriving to the compute
 The resets caused the main (bottom) engine to stop. When the computer tried to start the engine again, but it needed to get power from 2 different souces. Because of the resets only 1 power source worked and the engine never started and Beresheet couldn't slow down and lost altitude very fast.
 
 All these reasons leaded to the sad crashing of Beresheet. Let's hope it won't happen again in Bereshit 2 - 2024.
+
+## Simulation Exaplined
+The simulations process is built with 3 classes:
+
+**Bereshit** - The main class with the computations and all related variables. We use a loop to update the parameters consistently until we reach the target. The angle is updated with the PID class.
+
+**Moon** - This class represents the moon and its gravitational parameters.
+
+**PID** - This class represents the PID controller in which we compute the angle multiple times in order to reach as close as we can to the target.
