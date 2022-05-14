@@ -48,6 +48,7 @@ public class Bereshit_101 {
 		double weight = WEIGHT_EMP + fuel;
 		System.out.format("%8s | %8s | %10s | %15s | %15s | %8s | %10s | %7s | %7s\n",
 				"time", "vs", "hs", "dist", "alt", "ang", "weight", "acc", "fuel");
+		System.out.println("------------------------------------------------------------------------------------------------------------------");
 		double NN = 0.7; // rate[0,1]
 		// ***** main simulation loop ******
 		while(alt>0) {
