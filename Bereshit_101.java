@@ -76,7 +76,7 @@ public class Bereshit_101 {
 					NN = 0.5;
 				else
 					NN = 0.1;
-				
+
 				if(hs<2) {hs=0;}
 				if(alt<125) { // very close to the ground!
 					NN=1; // maximum braking!
@@ -108,6 +108,10 @@ public class Bereshit_101 {
 			vs -= v_acc*dt;
 			alt -= dt*vs;
 		}
+		// OUR EXTENSIONS:
+		double fuelPercentage = 100 * (fuel / 121);
+		System.out.println("\nFinished simulation with " + round(fuel) + " litres of fuel which are "+
+				round(fuelPercentage) + "% of the initial amount.");
 	}
 
 	public static String round(double val)
