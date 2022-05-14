@@ -2,6 +2,11 @@ package Drone;
 
 import simulation.Moon;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.PrintWriter;
+
 /**
  * This class represents the basic flight controller of the Bereshit space craft.
  * @author ben-moshe
@@ -29,9 +34,11 @@ public class Bereshit_101 {
 		return ans;
 	}
 	// 14095, 955.5, 24.8, 2.0
-	public static void main(String[] args) {
-		System.out.println("Simulating Bereshit's Landing:");
+	public static void main(String[] args) throws IOException {
+		FileWriter writer = new FileWriter("log.txt");
+		PrintWriter outfile = new PrintWriter(writer);
 
+		printAndLog("Simulating Bereshit's Landing:\n", System.out, outfile);
 		// Extensions:
 		PID pid = new PID(5, 0.05, 0.06, 120);
 
@@ -46,6 +53,7 @@ public class Bereshit_101 {
 		double acc=0; // Acceleration rate (m/s^2)
 		double fuel = 121; //
 		double weight = WEIGHT_EMP + fuel;
+		
 		System.out.format("%8s | %8s | %10s | %15s | %15s | %8s | %10s | %7s | %7s\n",
 				"time", "vs", "hs", "dist", "alt", "ang", "weight", "acc", "fuel");
 		System.out.println("------------------------------------------------------------------------------------------------------------------");
@@ -112,10 +120,17 @@ public class Bereshit_101 {
 		double fuelPercentage = 100 * (fuel / 121);
 		System.out.println("\nFinished simulation with " + round(fuel) + " litres of fuel which are "+
 				round(fuelPercentage) + "% of the initial amount.");
+
+		writer.close();
 	}
 
 	public static String round(double val)
 	{
 		return String.format("%.2f", val);
+	}
+
+	private static void printAndLog(final String msg, PrintStream out1, PrintWriter out2) {
+		out1.println(msg);
+		out2.write(msg);
 	}
 }
