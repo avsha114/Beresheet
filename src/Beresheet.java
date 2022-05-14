@@ -82,7 +82,7 @@ public class Beresheet {
 				// OUR Extension:
 				ang = pid.update(ang, dt);
 
-				if (ang > 9)
+				if (ang > 180)
 					NN = 1;
 				else if (ang <= 180 && ang > 90)
 					NN = 0.5;
