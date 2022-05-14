@@ -61,12 +61,22 @@ public class Bereshit_101 {
 			if(alt>2000) {	// maintain a vertical speed of [20-25] m/s
 				if(vs >25) {NN+=0.003*dt;} // more power for braking
 				if(vs <20) {NN-=0.003*dt;} // less power for braking
+
+				// OUR Extension:
+				ang = pid.update(ang, dt);
 			}
 			// lower than 2 km - horizontal speed should be close to zero
 			else {
-				if(ang>3) {ang-=3;} // rotate to vertical position.
-				else {ang =0;}
-				NN=0.5; // brake slowly, a proper PID controller here is needed!
+				// OUR Extension:
+				ang = pid.update(ang, dt);
+
+				if (ang > 9)
+					NN = 1;
+				else if (ang <= 180 && ang > 90)
+					NN = 0.5;
+				else
+					NN = 0.1;
+				
 				if(hs<2) {hs=0;}
 				if(alt<125) { // very close to the ground!
 					NN=1; // maximum braking!
@@ -99,7 +109,7 @@ public class Bereshit_101 {
 			alt -= dt*vs;
 		}
 	}
-	
+
 	public static String round(double val)
 	{
 		return String.format("%.2f", val);
