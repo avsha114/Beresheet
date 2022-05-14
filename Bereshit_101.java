@@ -35,8 +35,9 @@ public class Bereshit_101 {
 	}
 	// 14095, 955.5, 24.8, 2.0
 	public static void main(String[] args) throws IOException {
-		FileWriter writer = new FileWriter("log.txt");
-		PrintWriter outfile = new PrintWriter(writer);
+		// OUR EXTENSIONS:
+		FileWriter fileWriter = new FileWriter("log.txt");
+		PrintWriter outfile = new PrintWriter(fileWriter);
 
 		printAndLog("Simulating Bereshit's Landing:\n", System.out, outfile);
 		// Extensions:
@@ -53,17 +54,22 @@ public class Bereshit_101 {
 		double acc=0; // Acceleration rate (m/s^2)
 		double fuel = 121; //
 		double weight = WEIGHT_EMP + fuel;
-		
-		System.out.format("%8s | %8s | %10s | %15s | %15s | %8s | %10s | %7s | %7s\n",
+
+		// OUR EXTENSIONS:
+		String headers = String.format("%8s | %8s | %10s | %15s | %15s | %8s | %10s | %7s | %7s\n",
 				"time", "vs", "hs", "dist", "alt", "ang", "weight", "acc", "fuel");
-		System.out.println("------------------------------------------------------------------------------------------------------------------");
+		printAndLog(headers, System.out, outfile);
+		printAndLog("------------------------------------------------------------------------------------------------------------------\n", System.out, outfile);
+
 		double NN = 0.7; // rate[0,1]
 		// ***** main simulation loop ******
 		while(alt>0) {
 			if(time%10==0 || alt<100) {
-				System.out.format("%8s | %8s | %10s | %15s | %15s | %8s | %10s | %7s | %7s\n",
-						round(time), round(vs), round(hs), round(dist), round(alt), round(ang), round(weight), round(acc), round(fuel));
 
+				// OUR EXTENSIONS:
+				String data = String.format("%8s | %8s | %10s | %15s | %15s | %8s | %10s | %7s | %7s\n",
+						round(time), round(vs), round(hs), round(dist), round(alt), round(ang), round(weight), round(acc), round(fuel));
+				printAndLog(data, System.out, outfile);
 			}
 			// over 2 km above the ground
 			if(alt>2000) {	// maintain a vertical speed of [20-25] m/s
@@ -118,10 +124,11 @@ public class Bereshit_101 {
 		}
 		// OUR EXTENSIONS:
 		double fuelPercentage = 100 * (fuel / 121);
-		System.out.println("\nFinished simulation with " + round(fuel) + " litres of fuel which are "+
-				round(fuelPercentage) + "% of the initial amount.");
+		String summary = "\nFinished simulation with " + round(fuel) + " litres of fuel which are "+
+				round(fuelPercentage) + "% of the initial amount.";
+		printAndLog(summary, System.out, outfile);
 
-		writer.close();
+		outfile.close();
 	}
 
 	public static String round(double val)
