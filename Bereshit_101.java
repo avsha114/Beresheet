@@ -31,6 +31,10 @@ public class Bereshit_101 {
 	// 14095, 955.5, 24.8, 2.0
 	public static void main(String[] args) {
 		System.out.println("Simulating Bereshit's Landing:");
+
+		// Extensions:
+		PID pid = new PID(5, 0.05, 0.06, 120);
+
 		// starting point:
 		double vs = 24.8;
 		double hs = 932;
@@ -42,7 +46,8 @@ public class Bereshit_101 {
 		double acc=0; // Acceleration rate (m/s^2)
 		double fuel = 121; //
 		double weight = WEIGHT_EMP + fuel;
-		System.out.println("time, vs, hs, dist, alt, ang,weight,acc");
+		System.out.format("%8s | %8s | %10s | %15s | %15s | %8s | %10s | %7s | %7s\n",
+				"time", "vs", "hs", "dist", "alt", "ang", "weight", "acc", "fuel");
 		double NN = 0.7; // rate[0,1]
 		// ***** main simulation loop ******
 		while(alt>0) {
