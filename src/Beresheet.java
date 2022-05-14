@@ -5,11 +5,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 
-/**
- * This class represents the basic flight controller of the Bereshit space craft.
- * @author ben-moshe
- *
- */
+
 public class Beresheet {
 	public static final double WEIGHT_EMP = 165; // kg
 	public static final double WEIGHT_FULE = 420; // kg
