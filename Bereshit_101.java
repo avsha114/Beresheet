@@ -53,7 +53,9 @@ public class Bereshit_101 {
 		// ***** main simulation loop ******
 		while(alt>0) {
 			if(time%10==0 || alt<100) {
-				System.out.println(time+","+vs+","+hs+","+dist+","+alt+","+ang+","+weight+","+acc);
+				System.out.format("%8s | %8s | %10s | %15s | %15s | %8s | %10s | %7s | %7s\n",
+						round(time), round(vs), round(hs), round(dist), round(alt), round(ang), round(weight), round(acc), round(fuel));
+
 			}
 			// over 2 km above the ground
 			if(alt>2000) {	// maintain a vertical speed of [20-25] m/s
@@ -96,5 +98,10 @@ public class Bereshit_101 {
 			vs -= v_acc*dt;
 			alt -= dt*vs;
 		}
+	}
+	
+	public static String round(double val)
+	{
+		return String.format("%.2f", val);
 	}
 }
